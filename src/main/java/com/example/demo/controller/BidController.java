@@ -26,12 +26,25 @@ public class BidController {
         return new ResponseEntity<>(bidRepository.findAll(), HttpStatus.OK);
     }
     
-    @GetMapping(value="/buyerauction/{buyerId}")
-    public ResponseEntity<List<Bid>> getSellerAuction(@PathVariable("buyerId") int buyerId){
+    @GetMapping(value="/buyerbids/{buyerId}")
+    public ResponseEntity<List<Bid>> getBuyerBid(@PathVariable("buyerId") int buyerId){
         System.out.println(buyerId);
         List<Bid> response = null;
         try{
         	response = bidRepository.findByBuyer(buyerId);
+        }
+        catch(Exception e){
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
+        
+    }
+    
+    @GetMapping(value="/auctionbids/{auctionId}")
+    public ResponseEntity<List<Bid>> getAuctionBid(@PathVariable("auctionId") int auctionId){
+        System.out.println(auctionId);
+        List<Bid> response = null;
+        try{
+        	response = bidRepository.findByAuction(auctionId);
         }
         catch(Exception e){
         }
@@ -51,4 +64,14 @@ public class BidController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @PostMapping(value = "/removeBid/{bidId}")
+    public ResponseEntity<Integer> removeItem(@PathVariable("bidId") int bidId) {
+        System.out.println(bidId);
+        int response = 0;
+        try {
+            response = bidRepository.remove(bidId);
+        } catch (Exception e) {
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

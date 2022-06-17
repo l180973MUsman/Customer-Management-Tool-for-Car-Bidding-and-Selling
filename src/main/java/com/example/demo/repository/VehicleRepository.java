@@ -9,4 +9,5 @@ public interface VehicleRepository {
     List<Vehicle> findAll();
     List<Vehicle> findBySeller(String seller);
     List<Vehicle> findByBuyer(String buyer);
+    int remove(int vehicle);
 }

@@ -26,6 +26,13 @@ public class AuctionController {
         return new ResponseEntity<>(auctionRepository.findAll(), HttpStatus.OK);
     }
     
+    @GetMapping(value="/getactiveauctions")
+    public ResponseEntity<List<Auction>> getActiveItems() {
+        //Getting the ID of the logged in user.
+        System.out.println("GET Active Auction");
+        return new ResponseEntity<>(auctionRepository.findAllActive(), HttpStatus.OK);
+    }
+    
     @GetMapping(value="/sellerauction/{sellerId}")
     public ResponseEntity<List<Auction>> getSellerAuction(@PathVariable("sellerId") int sellerId){
         System.out.println(sellerId);
@@ -47,6 +54,39 @@ public class AuctionController {
         	response = auctionRepository.save(temp);
         }
         catch(Exception e){
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    
+    @PostMapping(value="/endauction/{auctionId}")
+    public ResponseEntity<Integer> endItem(@PathVariable("auctionId") int auctionId){        
+        int response = 0;
+        try{
+        	response = auctionRepository.endAuction(auctionId);
+        }
+        catch(Exception e){
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    
+    @PostMapping(value="/soldauction/{auctionId}")
+    public ResponseEntity<Integer> soldItem(@PathVariable("auctionId") int auctionId){        
+        int response = 0;
+        try{
+        	response = auctionRepository.soldAuction(auctionId);
+        }
+        catch(Exception e){
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    
+    @PostMapping(value = "/removeAuction/{auctionId}")
+    public ResponseEntity<Integer> removeItem(@PathVariable("auctionId") int auctionId) {
+        System.out.println(auctionId);
+        int response = 0;
+        try {
+            response = auctionRepository.remove(auctionId);
+        } catch (Exception e) {
         }
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

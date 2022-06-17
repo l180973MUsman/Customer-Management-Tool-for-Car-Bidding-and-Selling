@@ -63,4 +63,15 @@ public class VehicleController {
         }
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    
+    @PostMapping(value = "/removeVehicle/{vehicleId}")
+    public ResponseEntity<Integer> removeItem(@PathVariable("vehicleId") int vehicleId) {
+        System.out.println(vehicleId);
+        int response = 0;
+        try {
+            response = vehicleRepository.remove(vehicleId);
+        } catch (Exception e) {
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
  }

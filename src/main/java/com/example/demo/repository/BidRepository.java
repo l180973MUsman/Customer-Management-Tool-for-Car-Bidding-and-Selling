@@ -8,4 +8,6 @@ public interface BidRepository {
     int save(Bid bid);
     List<Bid> findAll();
     List<Bid> findByBuyer(int buyer);
+    List<Bid> findByAuction(int auction);
+    int remove(int bid);
 }

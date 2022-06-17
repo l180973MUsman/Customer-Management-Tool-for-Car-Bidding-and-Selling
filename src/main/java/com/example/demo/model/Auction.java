@@ -10,6 +10,8 @@ public class Auction {
     private Boolean status;
     private int vehicle_id;
     private int user_id;
+    private int currentwinner_id;
+    private int finalwinner_id;
     private double min_bid;
     private double buy_out;
     private double current_bid;
@@ -100,6 +102,22 @@ public class Auction {
 	}
 	public void setDate_ending(LocalDateTime date_ending) {
 		this.date_ending = date_ending;
+	}
+
+	public int getCurrentwinner_id() {
+		return currentwinner_id;
+	}
+
+	public void setCurrentwinner_id(int currentwinner_id) {
+		this.currentwinner_id = currentwinner_id;
+	}
+
+	public int getFinalwinner_id() {
+		return finalwinner_id;
+	}
+
+	public void setFinalwinner_id(int finalwinner_id) {
+		this.finalwinner_id = finalwinner_id;
 	}
     
 

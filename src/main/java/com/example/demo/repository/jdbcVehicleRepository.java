@@ -46,6 +46,12 @@ public class jdbcVehicleRepository implements VehicleRepository{
 		return db.query("Select * from Vehicle",
                 BeanPropertyRowMapper.newInstance(Vehicle.class));
 	}
+
+	@Override
+	public int remove(int vehicle) {
+		// TODO Auto-generated method stub
+		return db.update("delete from Vehicle where ID=?", vehicle);
+	}
 	
 	
 

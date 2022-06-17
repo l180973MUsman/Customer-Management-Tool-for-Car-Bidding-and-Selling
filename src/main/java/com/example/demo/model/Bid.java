@@ -12,7 +12,7 @@ public class Bid {
 	private double amount;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime bid_date;
-	private boolean is_invalid;
+	private boolean isinvalid;
 	
 	Bid(){}
 	
@@ -20,7 +20,7 @@ public class Bid {
 		this.user_id = user_id;
 		this.auction_id = auction_id;
 		this.amount = amount;
-		this.is_invalid = false;
+		this.isinvalid = false;
     }
 	
 	public int getId() {
@@ -48,12 +48,12 @@ public class Bid {
 		this.amount = amount;
 	}
 
-	public boolean isIs_invalid() {
-		return is_invalid;
+	public boolean isIsinvalid() {
+		return isinvalid;
 	}
 
-	public void setIs_invalid(boolean is_invalid) {
-		this.is_invalid = is_invalid;
+	public void setIsinvalid(boolean isinvalid) {
+		this.isinvalid = isinvalid;
 	}
 
 	public LocalDateTime getBid_date() {
