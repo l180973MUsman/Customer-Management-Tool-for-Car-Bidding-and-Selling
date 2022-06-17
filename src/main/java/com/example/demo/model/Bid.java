@@ -1,0 +1,66 @@
+package com.example.demo.model;
+
+import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+public class Bid {
+
+	private int id;
+	private int user_id;
+	private int auction_id;
+	private double amount;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime bid_date;
+	private boolean is_invalid;
+	
+	Bid(){}
+	
+	public Bid (int user_id, int auction_id, double amount){
+		this.user_id = user_id;
+		this.auction_id = auction_id;
+		this.amount = amount;
+		this.is_invalid = false;
+    }
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+	public int getAuction_id() {
+		return auction_id;
+	}
+	public void setAuction_id(int auction_id) {
+		this.auction_id = auction_id;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public boolean isIs_invalid() {
+		return is_invalid;
+	}
+
+	public void setIs_invalid(boolean is_invalid) {
+		this.is_invalid = is_invalid;
+	}
+
+	public LocalDateTime getBid_date() {
+		return bid_date;
+	}
+
+	public void setBid_date(LocalDateTime bid_date) {
+		this.bid_date = bid_date;
+	}
+}
